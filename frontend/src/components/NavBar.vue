@@ -1,0 +1,69 @@
+<template>
+  <nav :class="{ scrolled: isScrolled }">
+    <a href="#home" class="nav-brand">
+      {{ t("প্রফেসর ডা.", "Prof. Dr.") }} <span>{{ t("শাহ আলম", "Shah Alam") }}</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about">{{ t("সম্পর্কে", "About") }}</a></li>
+      <li><a href="#services">{{ t("সেবা", "Services") }}</a></li>
+      <li><a href="#chamber">{{ t("চেম্বার", "Chamber") }}</a></li>
+      <li><a href="#publications">{{ t("গবেষণা", "Research") }}</a></li>
+      <li><a href="#awards">{{ t("পুরস্কার", "Awards") }}</a></li>
+      <li><a href="#news">{{ t("সংবাদ", "News") }}</a></li>
+      <li><a href="#blog">{{ t("ব্লগ", "Blog") }}</a></li>
+      <li><a href="#videos">{{ t("ভিডিও", "Videos") }}</a></li>
+      <li><a href="#gallery">{{ t("গ্যালারি", "Gallery") }}</a></li>
+      <li><a href="#contact" class="btn-appt">{{ t("অ্যাপয়েন্টমেন্ট", "Appointment") }}</a></li>
+    </ul>
+
+    <div class="lang-toggle">
+      <button class="lang-btn" :class="{ active: lang === 'bn' }" @click="setLang('bn')">বাং</button>
+      <span class="lang-sep"></span>
+      <button class="lang-btn" :class="{ active: lang === 'en' }" @click="setLang('en')">EN</button>
+    </div>
+
+    <!-- Hamburger -->
+    <div class="hamburger" @click="toggleMenu">
+      <span :style="menuOpen ? 'transform:rotate(45deg) translate(5px,5px)' : ''"></span>
+      <span :style="menuOpen ? 'opacity:0' : ''"></span>
+      <span :style="menuOpen ? 'transform:rotate(-45deg) translate(5px,-5px)' : ''"></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" :class="{ open: menuOpen }">
+    <a href="#about"        @click="closeMenu">{{ t("সম্পর্কে", "About") }}</a>
+    <a href="#services"     @click="closeMenu">{{ t("সেবা", "Services") }}</a>
+    <a href="#chamber"      @click="closeMenu">{{ t("চেম্বার", "Chamber") }}</a>
+    <a href="#publications" @click="closeMenu">{{ t("গবেষণা", "Research") }}</a>
+    <a href="#awards"       @click="closeMenu">{{ t("পুরস্কার", "Awards") }}</a>
+    <a href="#news"         @click="closeMenu">{{ t("সংবাদ", "News") }}</a>
+    <a href="#blog"         @click="closeMenu">{{ t("ব্লগ", "Blog") }}</a>
+    <a href="#videos"       @click="closeMenu">{{ t("ভিডিও", "Videos") }}</a>
+    <a href="#gallery"      @click="closeMenu">{{ t("গ্যালারি", "Gallery") }}</a>
+    <a href="#contact"      @click="closeMenu" style="color:var(--gold)!important;font-weight:700!important;">
+      {{ t("অ্যাপয়েন্টমেন্ট", "Appointment") }}
+    </a>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted, onUnmounted } from "vue"
+import { storeToRefs } from "pinia"
+import { useI18nStore } from "@/stores/i18n"
+
+const i18nStore = useI18nStore()
+const { lang } = storeToRefs(i18nStore)
+const { setLang, t } = i18nStore
+
+const isScrolled = ref(false)
+const menuOpen = ref(false)
+
+function handleScroll() { isScrolled.value = window.scrollY > 50 }
+function toggleMenu() { menuOpen.value = !menuOpen.value }
+function closeMenu() { menuOpen.value = false }
+
+onMounted(() => window.addEventListener("scroll", handleScroll))
+onUnmounted(() => window.removeEventListener("scroll", handleScroll))
+</script>
