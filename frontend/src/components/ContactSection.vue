@@ -70,6 +70,9 @@
           <!-- ফর্ম -->
           <div v-else>
             <h3>{{ t("অ্যাপয়েন্টমেন্ট ফর্ম", "Appointment Form") }}</h3>
+            <div v-if="formError" class="form-error-box">
+              <i class="fas fa-exclamation-circle"></i> {{ formError }}
+            </div>
 
             <div class="form-row">
               <div class="form-group">
@@ -158,6 +161,7 @@ const { t } = useI18nStore()
 useScrollAnimation()
 const loading = ref(false)
 const submitted = ref(false)
+const formError = ref("")
 
 const today = computed(() => new Date().toISOString().split("T")[0])
 
@@ -173,6 +177,7 @@ const errors = reactive({})
 
 function validate() {
   Object.keys(errors).forEach(k => delete errors[k])
+  formError.value = ""
   // honeypot check — bot হলে সাথে সাথে false return
   if (form.honeypot) return false
   if (!form.name)           errors.name = t("নাম আবশ্যক", "Name is required")
@@ -253,7 +258,13 @@ async function submitForm() {
     resetForm()
   } catch (err) {
     console.error("Error:", err.response?.data)
-    alert(JSON.stringify(err.response?.data))
+    const errData = err.response?.data
+    if (errData?.errors) {
+      const msgs = Object.values(errData.errors).flat().join(" | ")
+      formError.value = msgs
+    } else {
+      formError.value = t("কিছু একটা ভুল হয়েছে। আবার চেষ্টা করুন।", "Something went wrong.")
+    }
   } finally {
     loading.value = false
   }

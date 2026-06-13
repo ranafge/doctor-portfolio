@@ -15,8 +15,8 @@ class AppointmentSerializer(serializers.ModelSerializer):
         value = value.strip()
         if not value:
             raise serializers.ValidationError("নাম আবশ্যক।")
-        if len(value) < 2:
-            raise serializers.ValidationError("নাম কমপক্ষে ২ অক্ষরের হতে হবে।")
+        if len(value) < 3:
+            raise serializers.ValidationError("নাম কমপক্ষে ৩ অক্ষরের হতে হবে।")
         if len(value) > 100:
             raise serializers.ValidationError("নাম ১০০ অক্ষরের বেশি হবে না।")
         # শুধু বাংলা, ইংরেজি অক্ষর ও স্পেস
