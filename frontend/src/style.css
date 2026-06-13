@@ -613,8 +613,15 @@
   }
 
   /* ── SCROLL ANIMATIONS ── */
-  .fade-up { opacity:1; transform:translateY(0); transition:opacity 0.6s, transform 0.6s; }
-  .fade-up.visible { opacity:1; transform:translateY(0); }
+  .fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+  .fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
   /* ── RESPONSIVE ── */
   @media(max-width:900px) {
@@ -1688,8 +1695,8 @@ nav {
 
 /* ── SCROLL ANIMATIONS ── */
 .fade-up {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 0;
+  transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
@@ -1699,18 +1706,12 @@ nav {
 }
 
 /* sections যেগুলো dynamic content লোড করে */
-#videos .fade-up,
-#gallery .fade-up,
-#footer .fade-up,
-#contact .fade-up {
-  opacity: 1 !important;
-  transform: none !important;
-}
+
 
 .fade-left {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .fade-left.visible {
@@ -1719,9 +1720,9 @@ nav {
 }
 
 .fade-right {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .fade-right.visible {
@@ -1967,10 +1968,21 @@ nav {
 }
 
 /* ── SCROLL ANIMATION - ALWAYS VISIBLE FOR THESE SECTIONS ── */
-#videos .fade-up,
-#gallery .fade-up,
-#footer .fade-up,
-#contact .fade-up {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+
+
+/* ── NAVBAR ACTIVE LINK ── */
+.nav-links a.active {
+  color: var(--gold) !important;
+  position: relative !important;
+}
+
+.nav-links a.active::after {
+  content: "" !important;
+  position: absolute !important;
+  bottom: -4px !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: var(--gold) !important;
+  border-radius: 2px !important;
 }

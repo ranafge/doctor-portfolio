@@ -125,6 +125,11 @@
               </div>
             </div>
 
+            <!-- Honeypot — bot trap, human দেখবে না -->
+            <div style="display:none;">
+              <input v-model="form.honeypot" type="text" name="website" autocomplete="off" />
+            </div>
+
             <div class="form-group">
               <label>{{ t("সমস্যার বিবরণ *", "Problem Description *") }}</label>
               <textarea v-model="form.problem" rows="4" :placeholder="t('আপনার সমস্যা বিস্তারিত লিখুন', 'Describe your problem in detail')"></textarea>
@@ -160,13 +165,16 @@ const form = reactive({
   name: "", phone: "", email: "",
   age: "", chamber: "",
   preferred_date: "", preferred_time: "",
-  problem: ""
+  problem: "",
+  honeypot: ""
 })
 
 const errors = reactive({})
 
 function validate() {
   Object.keys(errors).forEach(k => delete errors[k])
+  // honeypot check — bot হলে সাথে সাথে false return
+  if (form.honeypot) return false
   if (!form.name)           errors.name = t("নাম আবশ্যক", "Name is required")
   if (!form.phone) {
     errors.phone = t("ফোন নম্বর আবশ্যক", "Phone is required")
@@ -224,15 +232,19 @@ async function submitForm() {
   if (!validate()) return
   loading.value = true
   try {
+    // XSS protection
+    function sanitize(str) {
+      return String(str).replace(/[<>"']/g, "")
+    }
     const payload = {
-      name: form.name,
+      name: sanitize(form.name),
       phone: form.phone,
       email: form.email || "",
       age: parseInt(form.age),
       chamber: form.chamber,
       preferred_date: form.preferred_date,
       preferred_time: form.preferred_time,
-      problem: form.problem,
+      problem: sanitize(form.problem),
     }
     console.log("Sending:", payload)
     const res = await api.submitAppointment(payload)

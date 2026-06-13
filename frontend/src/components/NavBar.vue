@@ -1,19 +1,19 @@
 <template>
   <nav :class="{ scrolled: isScrolled }">
     <a href="#home" class="nav-brand">
-      {{ t("প্রফেসর ডা.", "Prof. Dr.") }} <span>{{ t("শাহ আলম", "Shah Alam") }}</span>
+      {{ t("প্রফেসর ডা.", "Prof. Dr.") }} <span>{{ t("শরীফ আহমেদ জোনায়েদ", "Sharif Ahmed Jonayed") }}</span>
     </a>
 
     <ul class="nav-links">
-      <li><a href="#about">{{ t("সম্পর্কে", "About") }}</a></li>
-      <li><a href="#services">{{ t("সেবা", "Services") }}</a></li>
-      <li><a href="#chamber">{{ t("চেম্বার", "Chamber") }}</a></li>
-      <li><a href="#publications">{{ t("গবেষণা", "Research") }}</a></li>
-      <li><a href="#awards">{{ t("পুরস্কার", "Awards") }}</a></li>
-      <li><a href="#news">{{ t("সংবাদ", "News") }}</a></li>
-      <li><a href="#blog">{{ t("ব্লগ", "Blog") }}</a></li>
-      <li><a href="#videos">{{ t("ভিডিও", "Videos") }}</a></li>
-      <li><a href="#gallery">{{ t("গ্যালারি", "Gallery") }}</a></li>
+      <li><a href="#about" :class="{ active: activeSection === 'about' }">{{ t("সম্পর্কে", "About") }}</a></li>
+      <li><a href="#services" :class="{ active: activeSection === 'services' }">{{ t("সেবা", "Services") }}</a></li>
+      <li><a href="#chamber" :class="{ active: activeSection === 'chamber' }">{{ t("চেম্বার", "Chamber") }}</a></li>
+      <li><a href="#publications" :class="{ active: activeSection === 'publications' }">{{ t("গবেষণা", "Research") }}</a></li>
+      <li><a href="#awards" :class="{ active: activeSection === 'awards' }">{{ t("পুরস্কার", "Awards") }}</a></li>
+      <li><a href="#news" :class="{ active: activeSection === 'news' }">{{ t("সংবাদ", "News") }}</a></li>
+      <li><a href="#blog" :class="{ active: activeSection === 'blog' }">{{ t("ব্লগ", "Blog") }}</a></li>
+      <li><a href="#videos" :class="{ active: activeSection === 'videos' }">{{ t("ভিডিও", "Videos") }}</a></li>
+      <li><a href="#gallery" :class="{ active: activeSection === 'gallery' }">{{ t("গ্যালারি", "Gallery") }}</a></li>
       <li><a href="#contact" class="btn-appt">{{ t("অ্যাপয়েন্টমেন্ট", "Appointment") }}</a></li>
     </ul>
 
@@ -58,9 +58,21 @@ const { lang } = storeToRefs(i18nStore)
 const { setLang, t } = i18nStore
 
 const isScrolled = ref(false)
+const activeSection = ref("home")
+
+function updateActiveSection() {
+  const sections = ["home", "about", "qualifications", "services", "chamber", "publications", "awards", "news", "blog", "videos", "gallery", "contact"]
+  for (const id of [...sections].reverse()) {
+    const el = document.getElementById(id)
+    if (el && window.scrollY >= el.offsetTop - 100) {
+      activeSection.value = id
+      break
+    }
+  }
+}
 const menuOpen = ref(false)
 
-function handleScroll() { isScrolled.value = window.scrollY > 50 }
+function handleScroll() { isScrolled.value = window.scrollY > 50; updateActiveSection() }
 function toggleMenu() { menuOpen.value = !menuOpen.value }
 function closeMenu() { menuOpen.value = false }
 

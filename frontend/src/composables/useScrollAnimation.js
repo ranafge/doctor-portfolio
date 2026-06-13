@@ -1,35 +1,35 @@
-import { onMounted, onUnmounted, watch, nextTick } from "vue"
+import { onMounted, onUnmounted } from "vue"
 
-export function useScrollAnimation(watchSource = null) {
+export function useScrollAnimation() {
   let observer = null
 
-  function setupObserver() {
-    if (observer) observer.disconnect()
+  function observe() {
+    const elements = document.querySelectorAll(".fade-up, .fade-left, .fade-right")
+    elements.forEach(el => {
+      if (observer) observer.observe(el)
+    })
+  }
 
+  onMounted(() => {
     observer = new IntersectionObserver(
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible")
+            observer.unobserve(entry.target)
           }
         })
       },
-      { threshold: 0.05, rootMargin: "0px 0px -30px 0px" }
+      { threshold: 0.1 }
     )
 
-    nextTick(() => {
-      const elements = document.querySelectorAll(".fade-up, .fade-left, .fade-right")
-      elements.forEach(el => observer.observe(el))
-    })
-  }
+    // initial observe
+    observe()
 
-  onMounted(() => {
-    setupObserver()
-    // dynamic content এর জন্য MutationObserver
-    const mutationObserver = new MutationObserver(() => {
-      setupObserver()
-    })
-    mutationObserver.observe(document.body, { childList: true, subtree: true })
+    // dynamic content এর জন্য — 500ms, 1s, 2s পরে আবার observe
+    setTimeout(observe, 500)
+    setTimeout(observe, 1000)
+    setTimeout(observe, 2000)
   })
 
   onUnmounted(() => {

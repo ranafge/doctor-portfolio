@@ -134,6 +134,15 @@ STATIC_URL = 'static/'
 
 
 # Vue.js ডেভ সার্ভার থেকে রিকোয়েস্ট অনুমতি
+# Rate limit
+RATELIMIT_USE_CACHE = "default"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
+    }
+}
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vite dev server
 ]

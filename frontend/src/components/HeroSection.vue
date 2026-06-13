@@ -3,7 +3,7 @@
     <div v-if="loading" class="loading fade-up">লোড হচ্ছে...</div>
     <div v-else-if="profile" class="hero-inner fade-up">
       <div class="hero-text">
-        <span class="hero-badge">{{ t("নিউরোলজি বিশেষজ্ঞ", "Neurology Specialist") }}</span>
+        <span class="hero-badge">{{ t("স্পাইন সার্জারি(মেরুদণ্ডের অস্ত্রোপচার)", "Spine Surgery") }}</span>
         <h1>{{ t(profile.name_bn, profile.name_en) }}</h1>
         <p class="hero-subtitle">{{ t(profile.speciality_bn, profile.speciality_en) }}</p>
         <p class="hero-dept">{{ t(profile.hospital_bn, profile.hospital_en) }}</p>

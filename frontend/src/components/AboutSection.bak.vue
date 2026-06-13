@@ -15,14 +15,12 @@
             <i v-else class="fas fa-user-md" style="font-size:4rem;color:rgba(255,255,255,0.5)"></i>
           </div>
           <h3>{{ t(profile.name_bn, profile.name_en) }}</h3>
-          <p>MBBS, MS (Ortho Surgery), FCPS (Ortho Surgery), FACS, FRCS, Global Spine Diploma<br>{{ t("স্পাইন সার্জারি বিশেষজ্ঞ", "Spine Surgery Specialist") }}</p>
+          <p>MBBS, FCPS, MD (Neurology)<br>{{ t("নিউরোলজি বিশেষজ্ঞ", "Neurology Specialist") }}</p>
           <div class="about-badges">
-            <span class="badge">{{ t("মেরুদণ্ডের সার্জারি", "Spine Surgery") }}</span>
-            <span class="badge">{{ t("স্কোলিওসিস", "Scoliosis") }}</span>
-            <span class="badge">{{ t("স্পাইন টিউবারকিউলোসিস", "Spinal TB") }}</span>
-            <span class="badge">{{ t("সার্ভিকাল স্পাইন", "Cervical Spine") }}</span>
-            <span class="badge">{{ t("লাম্বার স্পাইন", "Lumbar Spine") }}</span>
-            <span class="badge">{{ t("স্পাইন ডিফরমিটি", "Spinal Deformity") }}</span>
+            <span class="badge">{{ t("স্ট্রোক বিশেষজ্ঞ", "Stroke Specialist") }}</span>
+            <span class="badge">{{ t("মৃগীরোগ", "Epilepsy") }}</span>
+            <span class="badge">{{ t("মাইগ্রেন", "Migraine") }}</span>
+            <span class="badge">{{ t("স্নায়ুরোগ", "Neurology") }}</span>
           </div>
         </div>
 
@@ -32,19 +30,19 @@
 
           <!-- সংক্ষিপ্ত টেক্সট — সবসময় দেখায় -->
           <p>{{ t(
-            "ডা. শরীফ আহমেদ জোনায়েদ বাংলাদেশের একজন খ্যাতিমান স্পাইন সার্জারি বিশেষজ্ঞ। তিনি দীর্ঘ ২০ বছরেরও বেশি সময় ধরে মেরুদণ্ডের জটিল রোগের চিকিৎসায় নিবেদিত।",
-            "Dr. Sharif Ahmed Jonayed is a renowned spine surgery specialist in Bangladesh with over 20 years of dedicated service in complex spinal disorders."
+            "প্রফেসর ডা. মো. শাহ আলম বাংলাদেশের অন্যতম বিশিষ্ট নিউরোলজি বিশেষজ্ঞ। তিনি দীর্ঘ ৩০ বছরেরও বেশি সময় ধরে স্নায়ুরোগ চিকিৎসায় নিবেদিত।",
+            "Prof. Dr. Md Shah Alam is one of Bangladesh\'s most distinguished neurologists with over 30 years of dedicated service in neurological medicine."
           ) }}</p>
 
           <!-- বিস্তারিত টেক্সট — শুধু expanded হলে দেখায় -->
           <div v-if="expanded">
             <p>{{ t(
-              "তিনি যুক্তরাষ্ট্র, যুক্তরাজ্য, জাপান, ভারত, কানাডা, সিঙ্গাপুর, দক্ষিণ কোরিয়া, অস্ট্রেলিয়া, থাইল্যান্ডসহ বিশ্বের বিভিন্ন দেশে স্পাইন সার্জারিতে ফেলোশিপ ও প্রশিক্ষণ সম্পন্ন করেছেন।",
-              "He has completed fellowships and training in spine surgery from USA, UK, Japan, India, Canada, Singapore, South Korea, Australia, Thailand and many other countries."
+              "তিনি দেশ-বিদেশে বহু গবেষণাপত্র প্রকাশ করেছেন এবং আন্তর্জাতিক সম্মেলনে বাংলাদেশকে প্রতিনিধিত্ব করেছেন। তাঁর চিকিৎসাধীন হাজার হাজার রোগী সুস্থ জীবন যাপন করছেন।",
+              "He has published numerous research papers and represented Bangladesh at international conferences. Thousands of his patients are living healthy lives."
             ) }}</p>
             <p>{{ t(
-              "তিনি বর্তমানে নিটোর, ঢাকায় সহযোগী অধ্যাপক হিসেবে কর্মরত। তিনি ৪৭টিরও বেশি আন্তর্জাতিক কনফারেন্সে মৌখিক উপস্থাপনা দিয়েছেন এবং ১৫টির বেশি গবেষণাপত্র প্রকাশ করেছেন।",
-              "He currently serves as Associate Professor at NITOR, Dhaka. He has delivered over 47 oral presentations at international conferences and published more than 15 research papers."
+              "ঢাকা মেডিকেল কলেজ হাসপাতালে নিউরোলজি বিভাগের প্রধান হিসেবে দীর্ঘদিন দায়িত্ব পালন করেছেন। তিনি সিঙ্গাপুরের ন্যাশনাল নিউরোসায়েন্স ইনস্টিটিউট থেকে ফেলোশিপ করেছেন।",
+              "He served as Head of Neurology at Dhaka Medical College Hospital for many years and completed his fellowship at the National Neuroscience Institute, Singapore."
             ) }}</p>
           </div>
 
