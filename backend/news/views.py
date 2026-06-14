@@ -1,7 +1,11 @@
-from rest_framework.generics import ListAPIView
+from rest_framework import generics
 from .models import News
 from .serializers import NewsSerializer
 
-class NewsListView(ListAPIView):
+class NewsListView(generics.ListAPIView):
+    queryset = News.objects.all().order_by("-date")  # ✅ published_date → date
+    serializer_class = NewsSerializer
+
+class NewsDetailView(generics.RetrieveAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer

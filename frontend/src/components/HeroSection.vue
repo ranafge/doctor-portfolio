@@ -47,5 +47,5 @@ const doctorStore = useDoctorStore()
 const { profile, loading } = storeToRefs(doctorStore)
 const { t } = useI18nStore()
 
-onMounted(() => doctorStore.fetchProfile())
+onMounted(() => doctorStore.fetchAll())
 </script>

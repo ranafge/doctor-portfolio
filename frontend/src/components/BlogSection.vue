@@ -23,7 +23,7 @@
             </div>
             <h4>{{ t(post.title_bn, post.title_en) }}</h4>
             <p>{{ t(post.summary_bn, post.summary_en) }}</p>
-            <a href="#" class="blog-link">
+            <a :href="`/blog/${post.id}`" class="blog-link">
               {{ t("পড়ুন", "Read More") }} <i class="fas fa-arrow-right"></i>
             </a>
           </div>

@@ -7,7 +7,7 @@
           <!-- কলাম ১: ডাক্তারের পরিচয় -->
           <div class="footer-col">
             <div class="footer-brand">
-              {{ t("প্রফেসর ডা.", "Prof. Dr.") }} <span>{{ t("মো. শাহ আলম", "Md Shah Alam") }}</span>
+              {{ t("ডা.", "Dr.") }} <span>{{ t("শরীফ আহমেদ জোনায়েদ", "Sharif Ahmed Jonaed") }}</span>
             </div>
             <p class="footer-desc">
               {{ t("বাংলাদেশের অন্যতম বিশিষ্ট নিউরোলজি বিশেষজ্ঞ। ৩০+ বছরের অভিজ্ঞতা সম্পন্ন চিকিৎসক।", "One of Bangladesh's most distinguished neurologists with 30+ years of experience.") }}
@@ -73,7 +73,7 @@
             <div class="footer-info-item">
               <i class="fas fa-envelope"></i>
               <div>
-                <div class="fi-val">dr.s.alam@hotmail.com</div>
+                <div class="fi-val">dr.Sharif.ahmed.jonayed@hotmail.com</div>
               </div>
             </div>
             <div class="footer-info-item">
@@ -95,7 +95,7 @@
     <!-- Footer Bottom -->
     <div class="footer-bottom">
       <div class="container">
-        <p>© {{ year }} {{ t("প্রফেসর ডা. মো. শাহ আলম। সর্বস্বত্ব সংরক্ষিত।", "Prof. Dr. Md Shah Alam. All rights reserved.") }}</p>
+        <p>© {{ year }} {{ t("ডা. শরীফ আহমেদ জোনায়েদ। সর্বস্বত্ব সংরক্ষিত।", "Dr. Sharif Ahmed Jonaed. All rights reserved.") }}</p>
       </div>
     </div>
   </footer>

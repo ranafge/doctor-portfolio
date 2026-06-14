@@ -1,7 +1,7 @@
 <template>
   <nav :class="{ scrolled: isScrolled }">
-    <a href="#home" class="nav-brand">
-      {{ t("প্রফেসর ডা.", "Prof. Dr.") }} <span>{{ t("শরীফ আহমেদ জোনায়েদ", "Sharif Ahmed Jonayed") }}</span>
+    <a href="/" @click.prevent="goHome" class="nav-brand">
+      ডা. <span>শরীফ আহমেদ জোনায়েদ</span>
     </a>
 
     <ul class="nav-links">
@@ -50,6 +50,7 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue"
+import { useRouter } from "vue-router"
 import { storeToRefs } from "pinia"
 import { useI18nStore } from "@/stores/i18n"
 
@@ -58,6 +59,19 @@ const { lang } = storeToRefs(i18nStore)
 const { setLang, t } = i18nStore
 
 const isScrolled = ref(false)
+const router = useRouter()
+
+function goHome() {
+  if (window.location.pathname === "/") {
+    document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })
+  } else {
+    router.push("/").then(() => {
+      setTimeout(() => {
+        document.getElementById("home")?.scrollIntoView({ behavior: "smooth" })
+      }, 400)
+    })
+  }
+}
 const activeSection = ref("home")
 
 function updateActiveSection() {
