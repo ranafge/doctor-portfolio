@@ -43,7 +43,7 @@
             <div class="contact-icon"><i class="fas fa-envelope"></i></div>
             <div>
               <div class="c-label">{{ t("ইমেইল", "Email") }}</div>
-              <div class="c-val">dr.s.alam@hotmail.com</div>
+              <div class="c-val">dr.jonayed@gmail.com</div>
             </div>
           </div>
 
