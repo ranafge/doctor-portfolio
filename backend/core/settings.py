@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',  # সবার উপরে রাখুন
+    'whitenoise.middleware.WhiteNoiseMiddleware',    # 👈 ঠিক এখানে থাকতে হবে
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -131,7 +132,8 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # 👈 এই ফোল্ডারেই collectstatic ফাইল জমা করবে
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Vue.js ডেভ সার্ভার থেকে রিকোয়েস্ট অনুমতি
 # Rate limit
