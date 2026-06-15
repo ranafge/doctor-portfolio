@@ -34,3 +34,40 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 SECRET_KEY = config("SECRET_KEY")
+
+# CORS settings
+CORS_ALLOWED_ORIGINS = [
+    "https://frontend-ashen-kappa-38.vercel.app",
+    "https://frontend-1maxhlx1v-rana-s-projects19.vercel.app",
+    "https://frontend-rlxjj44md-rana-s-projects19.vercel.app",
+    "http://localhost:5173",  # লোকাল ডেভেলপমেন্টের জন্য
+]
+
+# সব origin allowed করতে চাইলে (শুধু টেস্টিং এর জন্য)
+# CORS_ALLOW_ALL_ORIGINS = True
+
+# credentials allow করতে চাইলে (cookie, auth header)
+CORS_ALLOW_CREDENTIALS = True
+
+# কোন HTTP methods allowed হবে
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# কোন headers allowed হবে
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
