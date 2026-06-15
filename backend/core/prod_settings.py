@@ -37,14 +37,13 @@ SECRET_KEY = config("SECRET_KEY")
 
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
-    "https://frontend-ashen-kappa-38.vercel.app",
-    "https://frontend-1maxhlx1v-rana-s-projects19.vercel.app",
-    "https://frontend-rlxjj44md-rana-s-projects19.vercel.app",
-    "http://localhost:5173",  # লোকাল ডেভেলপমেন্টের জন্য
+   "https://doctor-portfolio-95wd.vercel.app",
+   "https://doctor-portfolio-95wd-git-master-rana-s-projects19.vercel.app",
+   "http://localhost:5173",
 ]
 
 # সব origin allowed করতে চাইলে (শুধু টেস্টিং এর জন্য)
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 # credentials allow করতে চাইলে (cookie, auth header)
 CORS_ALLOW_CREDENTIALS = True
