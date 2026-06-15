@@ -73,7 +73,7 @@
             <div class="footer-info-item">
               <i class="fas fa-envelope"></i>
               <div>
-                <div class="fi-val">dr.Sharif.ahmed.jonayed@hotmail.com</div>
+                <div class="fi-val">dr.jonayed@gmail.com </div>
               </div>
             </div>
             <div class="footer-info-item">
