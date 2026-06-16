@@ -1,14 +1,11 @@
 from .settings import *
 import dj_database_url
 from decouple import config
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 
 DEBUG = False
 ALLOWED_HOSTS = ["*"]
 
-# Database — Render PostgreSQL
+# Database
 DATABASES = {
     "default": dj_database_url.config(
         default=config("DATABASE_URL"),
@@ -22,13 +19,8 @@ STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# ========== CLOUDINARY (শুধু CLOUDINARY_URL ব্যবহার করুন) ==========
+# ========== CLOUDINARY (এটুকুই যথেষ্ট) ==========
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-# Cloudinary config (শুধু URL)
-cloudinary.config(
-    cloud_url=config('CLOUDINARY_URL')
-)
 
 # ========== CORS ==========
 CORS_ALLOWED_ORIGINS = [
@@ -38,24 +30,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_METHODS = [
-    'DELETE',
-    'GET',
-    'OPTIONS',
-    'PATCH',
-    'POST',
-    'PUT',
-]
-CORS_ALLOW_HEADERS = [
-    'accept',
-    'accept-encoding',
-    'authorization',
-    'content-type',
-    'dnt',
-    'origin',
-    'user-agent',
-    'x-csrftoken',
-    'x-requested-with',
-]
+CORS_ALLOW_METHODS = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
+CORS_ALLOW_HEADERS = ['accept', 'accept-encoding', 'authorization', 'content-type', 'dnt', 'origin', 'user-agent', 'x-csrftoken', 'x-requested-with']
 
 SECRET_KEY = config("SECRET_KEY")
