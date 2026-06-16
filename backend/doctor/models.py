@@ -2,6 +2,8 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
+from cloudinary.models import CloudinaryField  # এই লাইনটা যোগ করো
+
 
 class DoctorProfile(models.Model):
     name_bn = models.CharField(max_length=200, verbose_name="নাম (বাংলা)")
@@ -19,7 +21,9 @@ class DoctorProfile(models.Model):
     experience_years = models.PositiveIntegerField(default=0)
     patients_count = models.PositiveIntegerField(default=0)
     publications_count = models.PositiveIntegerField(default=0)
-    photo = models.ImageField(upload_to='doctor/', blank=True, null=True)
+    # photo = models.ImageField(upload_to='doctor/', blank=True, null=True)
+    photo = CloudinaryField('image', blank=True, null=True)
+
 
     def __str__(self):
         return self.name_en
