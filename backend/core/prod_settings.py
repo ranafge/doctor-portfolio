@@ -29,9 +29,9 @@ CLOUDINARY_STORAGE = {
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 # CORS — Vercel domain
-CORS_ALLOWED_ORIGINS = [
-    config("FRONTEND_URL", default="http://localhost:5173"),
-]
+# CORS_ALLOWED_ORIGINS = [
+#     config("FRONTEND_URL", default="http://localhost:5173"),
+# ]
 
 SECRET_KEY = config("SECRET_KEY")
 
