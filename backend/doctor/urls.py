@@ -1,8 +1,6 @@
 from django.urls import path
-from rest_framework.routers import DefaultRouter
-from .views import DoctorProfileViewSet
+from .views import DoctorProfileView
 
-router = DefaultRouter()
-router.register(r'', DoctorProfileViewSet, basename='doctor')
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('profile/', DoctorProfileView.as_view(), name='doctor-profile'),
+]

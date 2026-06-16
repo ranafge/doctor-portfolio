@@ -3,7 +3,6 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.generics import RetrieveAPIView
 from .models import DoctorProfile
-
 from .serializers import DoctorProfileSerializer
 
 class DoctorProfileView(RetrieveAPIView):
