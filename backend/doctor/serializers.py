@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from .models import DoctorProfile, Qualification
 
 class QualificationSerializer(serializers.ModelSerializer):
@@ -9,6 +8,7 @@ class QualificationSerializer(serializers.ModelSerializer):
 
 class DoctorProfileSerializer(serializers.ModelSerializer):
     qualifications = QualificationSerializer(many=True, read_only=True)
+    photo = serializers.SerializerMethodField()  # ✅ এটা যোগ করো
 
     class Meta:
         model = DoctorProfile
@@ -29,6 +29,11 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
             'experience_years',
             'patients_count',
             'publications_count',
-            'photo',  # ✅ এখানে photo আছে!
+            'photo',
             'qualifications'
         ]
+
+    def get_photo(self, obj):  # ✅ এটা যোগ করো
+        if obj.photo:
+            return obj.photo.url  # Cloudinary এর full URL রিটার্ন করবে
+        return None
