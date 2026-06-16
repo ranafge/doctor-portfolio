@@ -12,4 +12,23 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DoctorProfile
-        fields = '__all__'
+        fields = [
+            'id',
+            'name_bn',
+            'name_en',
+            'title_bn',
+            'title_en',
+            'speciality_bn',
+            'speciality_en',
+            'hospital_bn',
+            'hospital_en',
+            'address_bn',
+            'address_en',
+            'phone',
+            'email',
+            'experience_years',
+            'patients_count',
+            'publications_count',
+            'photo',  # ✅ এখানে photo আছে!
+            'qualifications'
+        ]
