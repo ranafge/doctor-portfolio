@@ -32,8 +32,11 @@ class DoctorProfileSerializer(serializers.ModelSerializer):
             'photo',
             'qualifications'
         ]
-
-    def get_photo(self, obj):  # ✅ এটা যোগ করো
-        if obj.photo:
-            return obj.photo.url  # Cloudinary এর full URL রিটার্ন করবে
+    def get_photo(self, obj):
+        if hasattr(obj, 'photo') and obj.photo:
+            # Cloudinary URL
+            if hasattr(obj.photo, 'url'):
+                return obj.photo.url
+            else:
+                return str(obj.photo)
         return None
